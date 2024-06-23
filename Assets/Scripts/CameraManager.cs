@@ -189,6 +189,16 @@ public class CameraManager : Singleton<CameraManager>
             ToggleCameras(cameraFromLeft, cameraFromRight, cameraFromLeft);
     }
 
+    public void SwapCamerasVertically(CinemachineVirtualCamera cameraFromBottom, CinemachineVirtualCamera cameraFromTop, Vector2 triggerExitDirection)
+    {
+        //If the current camera is the camera on the bottom, and trigger exit direction was on the top
+        if(currentCamera == cameraFromBottom && triggerExitDirection.y > 0)
+            ToggleCameras(cameraFromBottom, cameraFromTop, cameraFromTop);
+        //Else if the current camera is the camera on top, and trigger exit direction was on bottom
+        else if(currentCamera == cameraFromTop && triggerExitDirection.y < 0)
+            ToggleCameras(cameraFromBottom, cameraFromTop, cameraFromBottom);
+    }
+
     void ToggleCameras(CinemachineVirtualCamera cameraFromLeft, CinemachineVirtualCamera cameraFromRight, CinemachineVirtualCamera cameraToToggleOn)
     {
         //Deactivate all cameras

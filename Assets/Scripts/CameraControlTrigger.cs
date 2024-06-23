@@ -27,9 +27,13 @@ public class CameraControlTrigger : MonoBehaviour
         {
             Vector2 exitDir = (col.transform.position - col2D.bounds.center).normalized;
 
-            //Swap cameras
-            if(customInspector.swapCamera && customInspector.cameraOnLeft != null && customInspector.cameraOnRight != null)
+            //Swap cameras horizontally
+            if(customInspector.swapCameraHorizontally && customInspector.cameraOnLeft != null && customInspector.cameraOnRight != null)
                 CameraManager.Instance.SwapCameras(customInspector.cameraOnLeft, customInspector.cameraOnRight, exitDir);
+
+            //Swap cameras vertically
+            if(customInspector.swapCameraVertically && customInspector.cameraOnTop != null && customInspector.cameraOnBottom != null)
+                CameraManager.Instance.SwapCamerasVertically(customInspector.cameraOnBottom, customInspector.cameraOnTop, exitDir);
 
             //Pan camera
             if(customInspector.panCameraOnContact)
@@ -47,14 +51,16 @@ public class CameraControlTrigger : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if(customInspector.swapCamera && !customInspector.panCameraOnContact)
+        if(customInspector.swapCameraHorizontally && !customInspector.panCameraOnContact)
             Gizmos.color = Color.yellow;
-        else if(!customInspector.swapCamera && customInspector.panCameraOnContact)
+        else if(!customInspector.swapCameraHorizontally && customInspector.panCameraOnContact)
             Gizmos.color = Color.cyan;
-        else if(customInspector.swapCamera && customInspector.panCameraOnContact)
+        else if(customInspector.swapCameraHorizontally && customInspector.panCameraOnContact)
             Gizmos.color = Color.magenta;
-        else if(!customInspector.swapCamera && !customInspector.panCameraOnContact)
+        else if(!customInspector.swapCameraHorizontally && !customInspector.panCameraOnContact)
             Gizmos.color = Color.green;
+        else
+            Gizmos.color = Color.red;
 
         Gizmos.DrawWireCube(transform.position, new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z));
     }
@@ -77,8 +83,11 @@ public class CustomInspector
     public bool switchVerticalBounds = false;
     [HideInInspector] public Collider2D boundOnTop, boundOnBottom;
 
-    public bool swapCamera = false;
+    public bool swapCameraHorizontally = false;
     [HideInInspector] public CinemachineVirtualCamera cameraOnLeft, cameraOnRight;
+
+    public bool swapCameraVertically = false;
+    [HideInInspector] public CinemachineVirtualCamera cameraOnTop, cameraOnBottom;
 
     public bool panCameraOnContact = false;
     [HideInInspector] public PanDirection panDirection;
@@ -123,7 +132,7 @@ public class ScriptEditor : Editor
                                                                                             typeof(Collider2D), true) as Collider2D;
         }
 
-        if(cameraControlTrigger.customInspector.swapCamera)
+        if(cameraControlTrigger.customInspector.swapCameraHorizontally)
         {
             EditorGUILayout.Space(5);
             EditorGUILayout.LabelField("Swap Cameras", EditorStyles.boldLabel);
@@ -131,6 +140,17 @@ public class ScriptEditor : Editor
                                                                                             typeof(CinemachineVirtualCamera), true) as CinemachineVirtualCamera;
 
             cameraControlTrigger.customInspector.cameraOnRight = EditorGUILayout.ObjectField("Camera On Right", cameraControlTrigger.customInspector.cameraOnRight,
+                                                                                            typeof(CinemachineVirtualCamera), true) as CinemachineVirtualCamera;
+        }
+
+        if(cameraControlTrigger.customInspector.swapCameraVertically)
+        {
+            EditorGUILayout.Space(5);
+            EditorGUILayout.LabelField("Swap Cameras", EditorStyles.boldLabel);
+            cameraControlTrigger.customInspector.cameraOnTop = EditorGUILayout.ObjectField("Camera On Top", cameraControlTrigger.customInspector.cameraOnTop,
+                                                                                            typeof(CinemachineVirtualCamera), true) as CinemachineVirtualCamera;
+
+            cameraControlTrigger.customInspector.cameraOnBottom = EditorGUILayout.ObjectField("Camera On Bottom", cameraControlTrigger.customInspector.cameraOnBottom,
                                                                                             typeof(CinemachineVirtualCamera), true) as CinemachineVirtualCamera;
         }
 

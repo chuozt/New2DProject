@@ -160,7 +160,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1021079441
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -759773990, guid: 525f6974734df4149a2dfdfd70451142, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,7 +188,7 @@ MonoBehaviour:
   bullet: {fileID: 9184254973837054877, guid: 6e5ee47f4d8ec1441bf6832cd2817fb2, type: 3}
   gunTransform: {fileID: 1817551883910129232}
   timeToShoot: 2
-  bulletSpeed: 150
+  bulletSpeed: 185
 --- !u!61 &7821160369363888821
 BoxCollider2D:
   m_ObjectHideFlags: 0

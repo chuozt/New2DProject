@@ -5,7 +5,7 @@ public class DirectionalProjectileBullet : MonoBehaviour
     void Awake()
     {
         //Destroy in an amount of time if not collide with anything
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 7);
     }
 
     void OnTriggerEnter2D(Collider2D col)
