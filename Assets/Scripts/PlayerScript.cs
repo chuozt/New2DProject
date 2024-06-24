@@ -85,6 +85,9 @@ public class PlayerScript : Singleton<PlayerScript>
     private bool isInUpwardWindZone = false;
     private float initialDrag;
     private float initialMoveSpeed;
+
+    public static event Action<IngameButton> onCloseToInteractable;
+    public static event Action<IngameButton> onOutInteractable;
     
     void Awake()
     {
@@ -627,6 +630,18 @@ public class PlayerScript : Singleton<PlayerScript>
             isJumping = false;
             anim.SetBool("isJumping", false);
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.layer == 8)
+            onCloseToInteractable?.Invoke(IngameButton.Interact);
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.gameObject.layer == 8)
+            onOutInteractable?.Invoke(IngameButton.Interact);
     }
 
     void OnEnable()

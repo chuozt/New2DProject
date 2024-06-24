@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -5529,7 +5529,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       tiles_464: 503730371
-      tiles_25: 1101186158
+      tiles_310: 312479802
       tiles_74: 1366773509
       tiles_442: -358002209
       tiles_112: -2002666048
@@ -5650,8 +5650,8 @@ TextureImporter:
       tiles_431: 1326866473
       tiles_170: 1222160178
       tiles_426: -1147859061
-      tiles_331: -1871776738
       tiles_390: 1696139870
+      tiles_331: -1871776738
       tiles_99: 1530666126
       tiles_236: -1135660217
       tiles_321: -1639814231
@@ -5773,8 +5773,8 @@ TextureImporter:
       tiles_175: -827275201
       tiles_223: 1875262314
       tiles_274: -374026367
-      tiles_145: 708342114
       tiles_30: -200871615
+      tiles_145: 708342114
       tiles_66: 327448411
       tiles_33: -514523410
       tiles_94: 1408348456
@@ -6031,7 +6031,7 @@ TextureImporter:
       tiles_140: -579786470
       tiles_482: 823710218
       tiles_495: 1463441810
-      tiles_310: 312479802
+      tiles_25: 1101186158
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
