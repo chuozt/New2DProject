@@ -38,6 +38,7 @@ public class PlayerScript : Singleton<PlayerScript>
     [SerializeField] private float interactRadius = 0.5f;
 
     private bool isInDialogue = false;
+    private bool canMove = true;
     private float moveX;
     private float coyoteTimeCounter;
     private float jumpBufferingCounter;
@@ -63,9 +64,13 @@ public class PlayerScript : Singleton<PlayerScript>
 
     [Space(10)]
     [Header("SFXs")]
-    [SerializeField] private AudioClip jumpSFX;
-    [SerializeField] private AudioClip deadSFX;
-    [SerializeField] private AudioClip powerUpSFX;
+    [SerializeField] private List<AudioClip> sfxFootsteps;
+    float footstepElapsedTime = 0;
+    [SerializeField] private float footstepRate = 3f;
+    [SerializeField] private AudioClip sfxJump;
+    [SerializeField] private AudioClip sfxLand;
+    [SerializeField] private AudioClip sfxDead;
+    [SerializeField] private AudioClip sfxPowerup;
 
     //PowerUpUnlock booleans
     [Space(10)]
@@ -81,6 +86,7 @@ public class PlayerScript : Singleton<PlayerScript>
     private bool isInteracting = false;
 
     //Float variables
+    private bool isPlayingFootstepSFX = false;
     private bool isFloating = false;
     private bool isInUpwardWindZone = false;
     private float initialDrag;
@@ -155,7 +161,7 @@ public class PlayerScript : Singleton<PlayerScript>
     void Move()
     {
         //If the player in dialogue, stop the player
-        if(isInDialogue)
+        if(isInDialogue || !canMove)
         {
             rb.velocity = Vector2.zero;
             return;
@@ -176,6 +182,25 @@ public class PlayerScript : Singleton<PlayerScript>
         {
             SetFacingLeft();
             CameraFollowPoint.Instance.CallTurn(isFacingRight);
+        }
+
+        //Play footstep sfx
+        if(IsGrounded() && variableJoystick.Horizontal != 0)
+        {
+            if(footstepElapsedTime < 1/footstepRate)
+            {
+                footstepElapsedTime += Time.deltaTime;
+                return;
+            }
+
+            AudioManager.Instance.PlaySFX(sfxFootsteps[UnityEngine.Random.Range(0, sfxFootsteps.Count)]);
+            footstepElapsedTime = 0;
+            isPlayingFootstepSFX = false;
+        }
+        else if(!IsGrounded() || variableJoystick.Horizontal == 0)
+        {
+            footstepElapsedTime = 0;
+            isPlayingFootstepSFX = false;
         }
     }
 
@@ -267,7 +292,7 @@ public class PlayerScript : Singleton<PlayerScript>
                 isStillPressingJump = false;
 
             //ToggleOnAnimation("isJumping");
-            AudioManager.Instance.PlaySFX(jumpSFX);
+            AudioManager.Instance.PlaySFX(sfxJump);
         }
         //Logics to perform Wall Jump
         else if(IsTouchingWall() && input.Player.Jump.IsPressed() && isUnlockedWallSliding && !isStillPressingJump)
@@ -286,7 +311,7 @@ public class PlayerScript : Singleton<PlayerScript>
             if(jumpVector.y == 0 && isStillPressingJump)
                 isStillPressingJump = false;
 
-            AudioManager.Instance.PlaySFX(jumpSFX);
+            AudioManager.Instance.PlaySFX(sfxJump);
         }
         
         VariableJumpHeight();
@@ -474,6 +499,7 @@ public class PlayerScript : Singleton<PlayerScript>
 
         if(!isFloating)
         {
+            MobileUIManager.Instance.OnTogglingFloatButton();
             isFloating = true;
             
             //Increase the linear drag
@@ -490,6 +516,7 @@ public class PlayerScript : Singleton<PlayerScript>
 
     void DisableFloat()
     {
+        MobileUIManager.Instance.OnTogglingOffFloatButton();
         isFloating = false;
 
         //Set stats to be the same as initial values
@@ -536,9 +563,11 @@ public class PlayerScript : Singleton<PlayerScript>
                 isUnlockedDoubleJump = true;
                 break;
             case PowerUp.Dash:
+                MobileUIManager.Instance.ToggleOnButton(IngameButton.Dash);
                 isUnlockedDash = true;
                 break;
             case PowerUp.Floating:
+                MobileUIManager.Instance.ToggleOnButton(IngameButton.Float);
                 isUnlockedFloating = true;
                 break;
             case PowerUp.WallSliding:
@@ -549,7 +578,7 @@ public class PlayerScript : Singleton<PlayerScript>
         isInteracting = false;
         interactingObject = null;
 
-        AudioManager.Instance.PlaySFX(powerUpSFX);
+        AudioManager.Instance.PlaySFX(sfxPowerup);
     }
 
     bool IsGrounded() //Ground check
@@ -595,7 +624,7 @@ public class PlayerScript : Singleton<PlayerScript>
 
     IEnumerator TakeDamageCoroutine()
     {
-        AudioManager.Instance.PlaySFX(deadSFX);
+        AudioManager.Instance.PlaySFX(sfxDead);
         CameraManager.Instance.ShakeCamera();
         anim.SetBool("isDead", true);
 
@@ -621,12 +650,14 @@ public class PlayerScript : Singleton<PlayerScript>
     
     public void SetIsInDialogueFlag(bool newBool) => isInDialogue = newBool;
 
+    public void SetCanMoveFlag(bool newBool) => canMove = newBool;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.GetContact(0).normal.y);
         if (isJumping && collision.GetContact(0).normal.y > 0f)
         {
-            
+            AudioManager.Instance.PlaySFX(sfxLand);
             isJumping = false;
             anim.SetBool("isJumping", false);
         }

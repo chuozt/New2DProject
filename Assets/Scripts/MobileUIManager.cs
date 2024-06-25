@@ -30,6 +30,8 @@ public class MobileUIManager : Singleton<MobileUIManager>
     void Awake()
     {
         ToggleOffButton(IngameButton.Interact);
+        ToggleOffButton(IngameButton.Float);
+        ToggleOffButton(IngameButton.Dash);
     }
 
     void Update()
@@ -131,6 +133,16 @@ public class MobileUIManager : Singleton<MobileUIManager>
     {
         for(int i = 0; i < buttons.Count; i++)
             ToggleOffButton((IngameButton)i);
+    }
+
+    public void OnTogglingFloatButton() 
+    {
+        buttons[(int)IngameButton.Float].image.color = Color.yellow;
+    }
+
+    public void OnTogglingOffFloatButton()
+    {
+        buttons[(int)IngameButton.Float].image.color = Color.white;
     }
 }
 

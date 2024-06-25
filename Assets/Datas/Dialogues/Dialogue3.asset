@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef31238a84fb464195b611d7a130b2c, type: 3}
+  m_Name: Dialogue3
+  m_EditorClassIdentifier: 
+  <MainCharacterImage>k__BackingField: {fileID: 1971537684, guid: 0170a4aaaaeb3444d83f85cebf87ddeb, type: 3}
+  <SideCharacterImage>k__BackingField: {fileID: -1805510951, guid: f09617e0fb6530544943d7deae4aadf0, type: 3}
+  <DialogueStructs>k__BackingField:
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: "\"Ah, a seeker in the sands. The desert\u2019s
+      breath has grown still, its dunes lifeless and barren. What do you search for
+      in this endless wasteland?\""
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"I am on a quest to restore life to this cave.
+      The desert seems... suffocated, as if time itself has stopped here."'
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"Indeed, the sands have been silent for far too
+      long. But you, you can stir the winds once more. Take this charm; it holds
+      the swiftness of the desert wind. With it, you can dash through the sands with
+      speed and purpose."'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"I will bring movement back to this place. Thank
+      you for your guidance."'
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"May the desert winds guide your steps and lead
+      you to your goal. Restore the breath of the desert, and it will thrive again."'

@@ -8,7 +8,7 @@ public class DialogueManager : Singleton<DialogueManager>
 {
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Text dialogueText;
-    [SerializeField] private float textSpeed;
+    [SerializeField] private float textDelay = 0.015f;
     [SerializeField] private Image characterImage;
 
     private SO_Dialogues SO_Dialogue;
@@ -25,6 +25,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(SO_Dialogues so_dialogue)
     {
+        dialogueText.text = string.Empty;
         //Set the player as in dialogue
         PlayerScript.Instance.SetIsInDialogueFlag(true);
         dialoguePanel.SetActive(true);
@@ -44,9 +45,9 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         //Set images and name texts for the respective character
         if(SO_Dialogue.DialogueStructs[index].CharacterIndex == 0)
-            characterImage.sprite = SO_Dialogue.SideCharacterImage;
-        else
             characterImage.sprite = SO_Dialogue.MainCharacterImage;
+        else
+            characterImage.sprite = SO_Dialogue.SideCharacterImage;
     }
 
     public void NextButton()
@@ -67,7 +68,7 @@ public class DialogueManager : Singleton<DialogueManager>
         foreach (char c in lines[index].ToCharArray())
         {
             dialogueText.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSeconds(textDelay);
         }
     }
 
@@ -87,6 +88,7 @@ public class DialogueManager : Singleton<DialogueManager>
             PlayerScript.Instance.SetIsInDialogueFlag(false);
             onEndDialogue?.Invoke();
             dialoguePanel.SetActive(false);
+            lines.Clear();
         }
     }
 }

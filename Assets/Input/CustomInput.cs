@@ -341,7 +341,7 @@ public partial class @CustomInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4d331750-1977-4913-ad35-43c4835d57e8"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -352,7 +352,7 @@ public partial class @CustomInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cd7dbc1e-7a25-4112-820a-b042ae79a9ca"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -4,6 +4,7 @@ using System;
 public class PowerUpUnlocker : MonoBehaviour, IInteractable
 {
     [SerializeField] private PowerUp newPowerUp = 0;
+    [SerializeField, TextArea(1,4)] string guideText;
     bool isInteracted = false;
 
     public static event Action<PowerUp> onUnlockPowerUp;
@@ -15,6 +16,7 @@ public class PowerUpUnlocker : MonoBehaviour, IInteractable
             
         isInteracted = true;
         onUnlockPowerUp?.Invoke(newPowerUp);
+        PowerUpText.Instance.ShowPowerUpText(guideText);
         gameObject.SetActive(false);
     }
 }

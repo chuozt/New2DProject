@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef31238a84fb464195b611d7a130b2c, type: 3}
+  m_Name: Dialogue2
+  m_EditorClassIdentifier: 
+  <MainCharacterImage>k__BackingField: {fileID: 1971537684, guid: 0170a4aaaaeb3444d83f85cebf87ddeb, type: 3}
+  <SideCharacterImage>k__BackingField: {fileID: -1510949307, guid: 57d4488c1768af94090e357dae65f2d7, type: 3}
+  <DialogueStructs>k__BackingField:
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"In the time of legends, these snowfields sparkled
+      like a thousand diamonds under the sun. But the great freeze came, and the
+      warmth of the land was locked away in an eternal frost. You, wanderer, what
+      warmth do you bring to these icy lands?"'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"I seek to thaw the frozen heart of this cave.
+      The cold here is... unnatural, like a sorrow that has lingered for too long."'
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"You speak truly. The sorrow of ages past has
+      frozen this place. But in you, I sense a warmth that can melt even the coldest
+      of ices. This sacred artifact may assist you. It will allow you to float gently,
+      like a snowflake carried by the wind."'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"I will use it to navigate these frozen expanses.
+      Thank you."'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"Bring back the warmth, and let the snowfields
+      shine once more. Your journey is the key to unlocking this frozen heart."'

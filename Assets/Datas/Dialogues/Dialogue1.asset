@@ -12,14 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef31238a84fb464195b611d7a130b2c, type: 3}
   m_Name: Dialogue1
   m_EditorClassIdentifier: 
-  <MainCharacterImage>k__BackingField: {fileID: 21300000, guid: dae33700bd23f76409a80bf78fdb8a42, type: 3}
-  <SideCharacterImage>k__BackingField: {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
+  <MainCharacterImage>k__BackingField: {fileID: 1971537684, guid: 0170a4aaaaeb3444d83f85cebf87ddeb, type: 3}
+  <SideCharacterImage>k__BackingField: {fileID: -1620468962, guid: 6a05e19bf19270f49ad12e3f83ecb5a3, type: 3}
   <DialogueStructs>k__BackingField:
-  - <CharacterIndex>k__BackingField: 0
-    <DialogueText>k__BackingField: asdasdsadasd
   - <CharacterIndex>k__BackingField: 1
-    <DialogueText>k__BackingField: asdasdasdasdasds
+    <DialogueText>k__BackingField: '"Long ago, this jungle thrived with life, every
+      tree, vine, and creature in perfect harmony. But a shadow fell upon these lands,
+      and the roots of the great trees began to wither. Our connection to the heart
+      of the earth weakened. Who are you, traveler, and what brings you here?"'
   - <CharacterIndex>k__BackingField: 0
-    <DialogueText>k__BackingField: asdasdasd12312321312312312312312312312312312312312
+    <DialogueText>k__BackingField: "\"I am searching for a way to restore this cave.
+      The jungle feels... different, as if it\u2019s crying out for help.\""
   - <CharacterIndex>k__BackingField: 1
-    <DialogueText>k__BackingField: asdasasasdasdsadasdasdasdsafasfas123213213123123123123123123123123123123
+    <DialogueText>k__BackingField: '"You have keen senses. The jungle has been dying
+      for centuries, its lifeblood drained. But you carry a light within you, a hope
+      we had long lost. Take this orb; it might be helpful for you on your journey.
+      With it, you can leap higher, reaching places that have been untouched for
+      ages."'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"Thank you. I will use this power to reach the
+      heights and find what is needed."'
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"May the spirit of the jungle guide your steps.
+      Restore the roots, and you may yet see this place bloom once more."'

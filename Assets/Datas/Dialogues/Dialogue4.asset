@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef31238a84fb464195b611d7a130b2c, type: 3}
+  m_Name: Dialogue4
+  m_EditorClassIdentifier: 
+  <MainCharacterImage>k__BackingField: {fileID: 1971537684, guid: 0170a4aaaaeb3444d83f85cebf87ddeb, type: 3}
+  <SideCharacterImage>k__BackingField: {fileID: -1658316641, guid: 7d6887e5f1ff94d47b49e97a5aa90d3d, type: 3}
+  <DialogueStructs>k__BackingField:
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"You tread where many fear to venture. These
+      mines, once echoing with the songs of the earth, have fallen silent. What compels
+      you to enter this forsaken place?"'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"I seek to revive this cave, to bring back the
+      life that once flourished here. The mines feel... abandoned, as if the heart
+      of the earth no longer beats."'
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"Your purpose is noble. The mines have indeed
+      lost their voice, but I see a spark in your eyes that can reignite their song.
+      This talisman carries the strength of the stone. It will aid you in scaling
+      the heights and depths of this forsaken place."'
+  - <CharacterIndex>k__BackingField: 0
+    <DialogueText>k__BackingField: '"I will use this power to reach where others
+      cannot. Thank you for your trust."'
+  - <CharacterIndex>k__BackingField: 1
+    <DialogueText>k__BackingField: '"May the strength of the stone support you. Revive
+      the heart of the mines, and let their song echo once more."'
