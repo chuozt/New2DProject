@@ -21,8 +21,5 @@ public class FixedCameraZone : MonoBehaviour
             onTriggerCameraZone?.Invoke(newCameraPosition, newSize, zoomDuration);
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, transform.localScale);
-    }
+    void OnDrawGizmos() => Gizmos.DrawWireCube(transform.position, transform.localScale);
 }

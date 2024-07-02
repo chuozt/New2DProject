@@ -10,8 +10,5 @@ public class Checkpoint : MonoBehaviour
             col.gameObject.GetComponent<PlayerScript>().SetCheckpoint(transform);
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, transform.localScale);
-    }
+    void OnDrawGizmos() => Gizmos.DrawWireCube(transform.position, transform.localScale);
 }

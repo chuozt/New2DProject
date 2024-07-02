@@ -135,15 +135,9 @@ public class MobileUIManager : Singleton<MobileUIManager>
             ToggleOffButton((IngameButton)i);
     }
 
-    public void OnTogglingFloatButton() 
-    {
-        buttons[(int)IngameButton.Float].image.color = Color.yellow;
-    }
+    public void OnTogglingFloatButton() => buttons[(int)IngameButton.Float].image.color = Color.yellow;
 
-    public void OnTogglingOffFloatButton()
-    {
-        buttons[(int)IngameButton.Float].image.color = Color.white;
-    }
+    public void OnTogglingOffFloatButton() => buttons[(int)IngameButton.Float].image.color = Color.white;
 }
 
 public enum IngameButton

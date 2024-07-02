@@ -722,4 +722,3 @@ public class PlayerScript : Singleton<PlayerScript>
     public bool IsInteracting { get{ return isInteracting; } set{ isInteracting = value; } }
     public bool IsInUpwardWindZone{ set{ isInUpwardWindZone = value; } }
 }
-

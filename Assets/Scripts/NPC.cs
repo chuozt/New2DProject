@@ -8,20 +8,11 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] GameObject powerUp;
     private bool isTriggered = false;
 
-    void Awake()
-    {
-        powerUp.SetActive(false);
-    }
+    void Awake() => powerUp.SetActive(false);
 
-    void OnEnable()
-    {
-        DialogueManager.onEndDialogue += EnablePowerUp;
-    }
+    void OnEnable() => DialogueManager.onEndDialogue += EnablePowerUp;
 
-    void OnDisable()
-    {
-        DialogueManager.onEndDialogue -= EnablePowerUp;
-    }
+    void OnDisable() => DialogueManager.onEndDialogue -= EnablePowerUp;
 
     void EnablePowerUp()
     {
