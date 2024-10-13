@@ -48,8 +48,8 @@ public class MobileUIManager : Singleton<MobileUIManager>
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
 
-        Debug.Log(screenPosition.x >= screenWidth/2 + bottomRightAreaBuffer.x && screenPosition.x <= screenWidth && 
-               screenPosition.y >= 0 && screenPosition.y <= screenHeight/2 + bottomRightAreaBuffer.y);
+        // Debug.Log(screenPosition.x >= screenWidth/2 + bottomRightAreaBuffer.x && screenPosition.x <= screenWidth && 
+        //        screenPosition.y >= 0 && screenPosition.y <= screenHeight/2 + bottomRightAreaBuffer.y);
                
         return screenPosition.x >= screenWidth/2 + bottomRightAreaBuffer.x && screenPosition.x <= screenWidth && 
                screenPosition.y >= 0 && screenPosition.y <= screenHeight/2 + bottomRightAreaBuffer.y;

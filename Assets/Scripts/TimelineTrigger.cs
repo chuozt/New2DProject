@@ -8,12 +8,15 @@ public class TimelineTrigger : MonoBehaviour
 {
     [SerializeField] private PlayableDirector playableDirector;
 
+    public static event Action onEndGame;
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.CompareTag("Player"))
         {
             playableDirector.Play();
             PlayerScript.Instance.SetCanMoveFlag(false);
+            onEndGame?.Invoke();
         }
     }
 }

@@ -11,7 +11,7 @@ public class PlayerScript : Singleton<PlayerScript>
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private VariableJoystick variableJoystick;
+    //[SerializeField] private VariableJoystick variableJoystick;
     [SerializeField] private Transform footTransform;
     [SerializeField] private Transform leftWallCheckTransform, rightWallCheckTransform;
     [SerializeField] private LayerMask layersCanJump;
@@ -128,7 +128,7 @@ public class PlayerScript : Singleton<PlayerScript>
         isFalling = !IsGrounded() && rb.velocity.y < -0.5f && isUnlockedWallSliding && !IsTouchingWall();
         isWallSliding = !IsGrounded() && IsTouchingWall() && isUnlockedWallSliding;
 
-        anim.SetFloat("horizontalSpeed", Mathf.Abs(variableJoystick.Horizontal));
+        anim.SetFloat("horizontalSpeed", Mathf.Abs(moveVector.x));
         anim.SetBool("isGrounded", IsGrounded());
         anim.SetBool("isFalling", isFalling);
         anim.SetBool("isWallSliding", isWallSliding);
@@ -171,33 +171,34 @@ public class PlayerScript : Singleton<PlayerScript>
         if(isDashing || hasWallJumped)
             return;
 
-        rb.velocity = new Vector2(variableJoystick.Horizontal * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveVector.x * moveSpeed, rb.velocity.y);
 
-        if(variableJoystick.Horizontal > 0 && isFacingLeft)
+        if(moveVector.x > 0 && isFacingLeft)
         {
             SetFacingRight();
             CameraFollowPoint.Instance.CallTurn(isFacingRight);
         }
-        else if(variableJoystick.Horizontal < 0 && isFacingRight)
+        else if(moveVector.x < 0 && isFacingRight)
         {
             SetFacingLeft();
             CameraFollowPoint.Instance.CallTurn(isFacingRight);
         }
 
         //Play footstep sfx
-        if(IsGrounded() && variableJoystick.Horizontal != 0)
+        if(IsGrounded() && moveVector.x != 0)
         {
             if(footstepElapsedTime < 1/footstepRate)
             {
                 footstepElapsedTime += Time.deltaTime;
                 return;
             }
-
-            AudioManager.Instance.PlaySFX(sfxFootsteps[UnityEngine.Random.Range(0, sfxFootsteps.Count)]);
+            
+            AudioClip sfx;
+            AudioManager.Instance.PlaySFX((sfx = sfxFootsteps[UnityEngine.Random.Range(0, sfxFootsteps.Count)]) != null ? sfx : null);
             footstepElapsedTime = 0;
             isPlayingFootstepSFX = false;
         }
-        else if(!IsGrounded() || variableJoystick.Horizontal == 0)
+        else if(!IsGrounded() || moveVector.x == 0)
         {
             footstepElapsedTime = 0;
             isPlayingFootstepSFX = false;
@@ -332,9 +333,7 @@ public class PlayerScript : Singleton<PlayerScript>
             hasDoubleJumped = false;
         }
         else
-        {
             coyoteTimeCounter -= Time.deltaTime;
-        }
     }
 
     void CheckJumpBuffering()
@@ -654,7 +653,6 @@ public class PlayerScript : Singleton<PlayerScript>
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.GetContact(0).normal.y);
         if (isJumping && collision.GetContact(0).normal.y > 0f)
         {
             AudioManager.Instance.PlaySFX(sfxLand);
